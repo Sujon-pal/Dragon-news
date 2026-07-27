@@ -15,18 +15,16 @@ const MainLayout = () => {
       </header>
 
       <main className="grid grid-cols-12 gap-3 ">
-  
-        <aside className="col-span-3">
-          <LeftAside></LeftAside>
+        <aside className="col-span-3 sticky top-3 h-fit self-start">
+          <LeftAside />
         </aside>
 
         <section className="main col-span-6">
           <Outlet></Outlet>
         </section>
-        <aside className="col-span-3">
+        <aside className="col-span-3 sticky top-3 h-fit self-start">
           <RightAside></RightAside>
         </aside>
-       
       </main>
     </div>
   );
