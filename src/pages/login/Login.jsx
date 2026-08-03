@@ -12,7 +12,7 @@ const Login = () => {
 
         {/* Logo */}
         <div className="flex justify-center mb-6">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-r from-primary to-blue-500 flex items-center justify-center text-white text-3xl shadow-lg">
+          <div className="w-20 h-20 rounded-full bg-linear-to-r from-primary to-blue-500 flex items-center justify-center text-white text-3xl shadow-lg">
             <FaLock />
           </div>
         </div>
@@ -85,7 +85,7 @@ const Login = () => {
           </div>
 
           {/* Login Button */}
-          <button className="btn w-full rounded-xl border-0 bg-gradient-to-r from-primary to-blue-500 text-gray-800 font-semibold text-base hover:scale-[1.02] hover:shadow-xl transition-all duration-300">
+          <button className="btn w-full rounded-xl border-0 bg-linear-to-r from-primary to-blue-500 text-gray-800 font-semibold text-base hover:scale-[1.02] hover:shadow-xl transition-all duration-300">
             Login
           </button>
 

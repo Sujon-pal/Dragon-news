@@ -1,4 +1,6 @@
+import { use } from "react";
 import { NavLink } from "react-router";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const navLinkClasses = ({ isActive }) =>
   isActive
@@ -6,6 +8,8 @@ const navLinkClasses = ({ isActive }) =>
     : "hover:text-primary";
 
 const NavBar = () => {
+
+  const {user} = use(AuthContext)
   const link = (
     <>
       <li>
@@ -47,7 +51,7 @@ const NavBar = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl font-bold">Dragon</a>
+        <a className="btn btn-ghost text-xl font-bold">{user && user.name}</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{link}</ul>

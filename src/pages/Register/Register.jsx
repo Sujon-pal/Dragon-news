@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { NavLink } from "react-router";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,23 +19,16 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-5">
-
       <div className="w-full max-w-md bg-white shadow-xl rounded-xl p-8">
-
-        <h1 className="text-3xl font-bold text-center">
-          Create Account
-        </h1>
+        <h1 className="text-3xl font-bold text-center">Create Account</h1>
 
         <p className="text-center text-gray-500 mt-2 mb-8">
           Register your account
         </p>
 
         <form onSubmit={handleSignup} className="space-y-5">
-
           <div>
-            <label className="font-medium">
-              Full Name
-            </label>
+            <label className="font-medium">Full Name</label>
 
             <input
               type="text"
@@ -45,9 +40,7 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="font-medium">
-              Email
-            </label>
+            <label className="font-medium">Email</label>
 
             <input
               type="email"
@@ -59,12 +52,9 @@ const Register = () => {
           </div>
 
           <div>
-            <label className="font-medium">
-              Password
-            </label>
+            <label className="font-medium">Password</label>
 
             <div className="relative mt-2">
-
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -78,27 +68,23 @@ const Register = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-4 top-3 text-blue-600 text-sm"
               >
-                {showPassword ? "Hide" : "Show"}
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
-
             </div>
           </div>
 
-          <button className="btn btn-primary w-full">
-            Create Account
-          </button>
-
+          <button className="btn btn-primary w-full">Create Account</button>
         </form>
 
         <p className="text-center mt-5">
           Already have an account?
-          <span className="text-primary font-semibold cursor-pointer ml-2">
+          <NavLink to='/auth/login'>
+            <span className="text-primary font-semibold cursor-pointer ml-2">
             Login
           </span>
+          </NavLink>
         </p>
-
       </div>
-
     </div>
   );
 };
