@@ -8,18 +8,34 @@ const navLinkClasses = ({ isActive }) =>
     : "hover:text-primary";
 
 const NavBar = () => {
+  const { user, logOut } = use(AuthContext);
 
-  const {user} = use(AuthContext)
+  const handleLOgout = () => {
+    console.log("Logout")
+    logOut()
+      .then(() => {
+        alert("logout Successyfully ");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const link = (
     <>
       <li>
-        <NavLink to='/' className={navLinkClasses}>Home</NavLink>
+        <NavLink to="/" className={navLinkClasses}>
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to='about' className={navLinkClasses}>About</NavLink>
+        <NavLink to="about" className={navLinkClasses}>
+          About
+        </NavLink>
       </li>
       <li>
-        <NavLink to='career' className={navLinkClasses}>Career</NavLink>
+        <NavLink to="career" className={navLinkClasses}>
+          Career
+        </NavLink>
       </li>
     </>
   );
@@ -51,13 +67,24 @@ const NavBar = () => {
             {link}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl font-bold">{user && user.name}</a>
+        <a className="btn btn-ghost text-xl font-bold">{user && user.email}</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{link}</ul>
       </div>
       <div className="navbar-end">
-        <NavLink to='/auth/login' className="btn text-white bg-gray-600">Login</NavLink>
+        {user ? (
+          <NavLink
+            onClick={handleLOgout}
+            className="btn font-bold text-red-800 bg-gray-400"
+          >
+            LogOut
+          </NavLink>
+        ) : (
+          <NavLink to="/auth/login" className="btn text-white bg-gray-600">
+            Login
+          </NavLink>
+        )}
       </div>
     </div>
   );

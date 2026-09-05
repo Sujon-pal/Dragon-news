@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { NavLink } from "react-router";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+  const { createUser, setUser } = use(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -15,6 +18,16 @@ const Register = () => {
     const password = form.get("password");
 
     console.log(name, email, password);
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        // console.log(user);
+      })
+      .catch((error) => {
+        const errormessage = error.message;
+        alert(errormessage);
+      });
   };
 
   return (
@@ -78,10 +91,10 @@ const Register = () => {
 
         <p className="text-center mt-5">
           Already have an account?
-          <NavLink to='/auth/login'>
+          <NavLink to="/auth/login">
             <span className="text-primary font-semibold cursor-pointer ml-2">
-            Login
-          </span>
+              Login
+            </span>
           </NavLink>
         </p>
       </div>
