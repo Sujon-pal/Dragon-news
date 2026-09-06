@@ -1,9 +1,21 @@
 import { Bookmark, Share2, Star, Eye } from "lucide-react";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
-  const { title, rating, total_view, author, thumbnail_url, details, tags } = news;
+  const {
+    id,
+    title,
+    rating,
+    total_view,
+    author,
+    thumbnail_url,
+    details,
+    tags,
+  } = news;
 
-  const publishedDate = new Date(author.published_date).toISOString().split("T")[0];
+  const publishedDate = new Date(author.published_date)
+    .toISOString()
+    .split("T")[0];
 
   return (
     <div className="max-w-xl mx-auto bg-white rounded-lg shadow-md overflow-hidden mb-6">
@@ -46,9 +58,12 @@ const NewsCard = ({ news }) => {
         <span>Tag Cloud Tags: {tags.join(", ")}</span>
         {" - "}
         <span>{details.slice(0, 100)}...</span>
-        <a href="#" className="block text-orange-500 font-medium mt-1 hover:underline">
+        <Link
+          to={`/newsDetails/${id}`}
+          className="block text-orange-500 font-medium mt-1 hover:underline"
+        >
           Read More
-        </a>
+        </Link>
       </div>
 
       {/* Footer: rating + views */}
